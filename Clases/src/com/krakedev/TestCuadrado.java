@@ -10,9 +10,9 @@ public class TestCuadrado {
 		double areaC1,areaC2,areaC3;
 		double periC1,periC2,periC3;
 		//Seteamos los valores
-		c1.lado=4;
-		c2.lado=3;
-		c3.lado=10;
+		c1.setLado(4);
+		c2.setLado(3);
+		c3.setLado(10);
 		//Calculamos el area
 		areaC1=c1.calcularArea();
 		areaC2=c2.calcularArea();
