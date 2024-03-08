@@ -1,4 +1,7 @@
-package com.krakedev;
+package com.krakedev.test;
+
+import com.krakedev.Persona;
+
 /**
  * Cometarios en varias lineas
  * */
