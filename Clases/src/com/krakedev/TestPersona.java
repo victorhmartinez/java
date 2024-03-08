@@ -9,6 +9,15 @@ public class TestPersona {
 		Persona p; //Declaro una variable p de tipo Persona
 		p=new Persona(); //Instacio un objeto persona
 		Persona p2= new Persona();
+		Persona p3= new Persona("Maria");
+		Persona p4 = new Persona("Carlos", 28, 1.68);
+	
+		
+		System.out.println("nombre:"+ p4.getNombre());
+		System.out.println("edad:"+p4.getEdadPersona());
+		System.out.println("estatura"+p4.getEstatura());
+		
+		
 		System.out.println("nombre:"+ p.getNombre());
 		System.out.println("edad:"+p.getEdadPersona());
 		System.out.println("estatura"+p.getEstatura());

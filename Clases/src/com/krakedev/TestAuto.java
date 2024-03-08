@@ -4,16 +4,9 @@ public class TestAuto {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Auto auto1 = new Auto();
-		Auto auto2 = new Auto();
-		//Modificamos los vvalores de los objetos
-		auto1.setAnio(2010);
-		auto1.setMarca("Toyota");
-		auto1.setPrecio(2500.000);
-		//Auto2
-		auto2.setAnio(2020);
-		auto2.setMarca("Chevrolet");
-		auto2.setPrecio(10000.00);
+		//Creamos los objetos con el constructor
+		Auto auto1 = new Auto("Toyota",2010,2500.000);
+		Auto auto2 = new Auto("Chevrolet",2020,10000.00);
 		
 		//Mostramos datos de auto1
 		System.out.println("Carro1:"+auto1.getMarca());

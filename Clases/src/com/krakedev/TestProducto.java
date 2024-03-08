@@ -4,27 +4,13 @@ public class TestProducto {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Producto productoA = new Producto();
-		Producto productoB = new Producto();
-		Producto productoC = new Producto();
-		//Modificamos su informacion
 		//----Producto A
-		productoA.setDescripcion("La descripcion del producto A");
-		productoA.setNombre("Parecetamol");
-		productoA.setPrecio(0.50f);
-		productoA.setStockActual(10);
+		Producto productoA = new Producto("Parecetamol","La descripcion del producto A",0.50f,10);
 		//----Producto B
-		productoB.setDescripcion("La descripcion del producto B");
-		productoB.setNombre("Aspirinas");
-		productoB.setPrecio(0.20f);
-		productoB.setStockActual(6);
-		
+		Producto productoB = new Producto("Aspirinas","La descripcion del producto B",0.20f,6);
 		//----Producto C
-		
-		productoC.setDescripcion("La descripcion del producto C");
-		productoC.setNombre("Jarabe para la tos");
-		productoC.setPrecio(2.5f);
-		productoC.setStockActual(100);
+		Producto productoC = new Producto("Jarabe para la tos","La descripcion del producto C",2.5f,100);
+	
 		
 	
 		//Mostramos los datos en pantalla
