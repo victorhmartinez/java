@@ -3,7 +3,7 @@ package com.cmc.evaluacion;
 public class CalculadoraAmortizacion {
 	public static double calcularCuota(Prestamo prestamo) {
 		double monto = prestamo.getMonto();
-	    double interesMensual = prestamo.getInteres() / 12 / 100; // Convertir la tasa de interés anual a mensual y a decimal
+	    double interesMensual = prestamo.getInteres() / 12 / 100; 
 	    int plazo = prestamo.getPlazo();
 
 	    double cuota = (monto * interesMensual) / (1 - Math.pow(1 + interesMensual, -plazo));
