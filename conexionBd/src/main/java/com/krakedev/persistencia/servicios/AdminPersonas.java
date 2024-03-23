@@ -2,8 +2,10 @@ package com.krakedev.persistencia.servicios;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.util.ArrayList;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -123,4 +125,113 @@ public static void eliminar(Persona per) throws Exception{
 	
 }
 
+public  static ArrayList<Persona> buscarPorNombre(String nombreBusqueda) throws Exception{
+	ArrayList<Persona> personas = new ArrayList<Persona>();
+	Connection con = null;
+	PreparedStatement ps=null;
+	ResultSet rs= null;
+	try {
+		con=ConexionBDD.conectar();
+		ps=con.prepareStatement("select * from persona where nombre like ?");
+		ps.setString(1, "%"+nombreBusqueda+"%");
+		rs=ps.executeQuery();
+		while(rs.next()) {
+			String cedula=rs.getString("cedula");
+			String nombre=rs.getString("nombre");
+			String apellido=rs.getString("apellido");
+			double estatura=rs.getDouble("estatura");
+		
+			Persona persona = new Persona();
+			persona.setCedula(cedula);
+			persona.setNombre(nombre);
+			persona.setApellido(apellido);
+			persona.setEstatura(estatura);
+			personas.add(persona);
+		}
+	} catch (Exception e) {
+		LOGGER.error("Error al consultar", e);
+		throw new Exception("Error al consultar");
+	}finally {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			LOGGER.error("Error con la BD", e);
+			throw new Exception("Error con la BD");		
+			}
+	}
+	return personas;
+}
+public static Persona buscarPorCedula(String cedula) throws Exception {
+	Persona p = new Persona();
+	Connection con = null;
+	PreparedStatement ps=null;
+	ResultSet rs= null;
+	try {
+		con=ConexionBDD.conectar();
+		ps=con.prepareStatement("select * from persona where cedula = ?");
+		ps.setString(1, cedula);
+		rs=ps.executeQuery();
+		if(rs.next()){
+			
+			String nombre=rs.getString("nombre");
+			String apellido=rs.getString("apellido");
+			int estatura=rs.getInt("estatura");
+			Persona persona = new Persona();
+			persona.setCedula(cedula);
+			persona.setNombre(nombre);
+			persona.setApellido(apellido);
+			persona.setEstatura(estatura);
+			p=persona;
+		}
+	} catch (Exception e) {
+		LOGGER.error("Error al consultar", e);
+		throw new Exception("Error al consultar");
+	}finally {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			LOGGER.error("Error con la BD", e);
+			throw new Exception("Error con la BD");		
+			}
+	}
+	
+	return p;
+}
+public  static ArrayList<Persona> buscarNumeroHijos(int nHijos) throws Exception{
+	ArrayList<Persona> personas = new ArrayList<Persona>();
+	Connection con = null;
+	PreparedStatement ps=null;
+	ResultSet rs= null;
+	try {
+		con=ConexionBDD.conectar();
+		ps=con.prepareStatement("select * from persona where numero_hijos = ?");
+		ps.setInt(1,nHijos);
+		rs=ps.executeQuery();
+		while(rs.next()) {
+			String cedula=rs.getString("cedula");
+			String nombre=rs.getString("nombre");
+			String apellido=rs.getString("apellido");
+			double estatura=rs.getDouble("estatura");
+		
+			Persona persona = new Persona();
+			persona.setCedula(cedula);
+			persona.setNombre(nombre);
+			persona.setApellido(apellido);
+			persona.setEstatura(estatura);
+			persona.setNumeroHijos(nHijos);
+			personas.add(persona);
+		}
+	} catch (Exception e) {
+		LOGGER.error("Error al consultar", e);
+		throw new Exception("Error al consultar");
+	}finally {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			LOGGER.error("Error con la BD", e);
+			throw new Exception("Error con la BD");		
+			}
+	}
+	return personas;
+}
 }
